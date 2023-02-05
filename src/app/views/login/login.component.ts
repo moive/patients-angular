@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from '../../services/api/api.service';
+import { ILogin } from '../../models/login.interface';
 
 @Component({
   selector: 'app-login',
@@ -12,8 +14,11 @@ export class LoginComponent {
     password: new FormControl('', Validators.required)
   });
 
-  onLogin(form: FormGroup) {
-    console.log(form);
+  constructor(private apiService: ApiService) {}
+
+  onLogin(form: ILogin) {
+    // console.log(form);
+    this.apiService.loginByEmail(form).subscribe(console.log);
     this.loginForm.reset();
   }
 }
