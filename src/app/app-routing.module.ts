@@ -13,11 +13,18 @@ const routes: Routes = [
   { path: 'new', component: NewComponent },
   { path: 'edit', component: EditComponent },
   { path: '404', component: NotFoundComponent },
-  { path: '**', component: NotFoundComponent },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class AppRoutingModule {}
+export const viewsComponent = [
+  LoginComponent,
+  DashboardComponent,
+  NewComponent,
+  EditComponent,
+  NotFoundComponent
+];

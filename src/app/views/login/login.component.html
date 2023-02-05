@@ -28,7 +28,10 @@
             <div class="text-center text-md-center mb-4 mt-md-0">
               <h1 class="mb-0 h3">Sign in to our platform</h1>
             </div>
-            <form action="#" class="mt-4">
+            <form
+              [formGroup]="loginForm"
+              (submit)="onLogin(loginForm.value)"
+              class="mt-4">
               <!-- Form -->
               <div class="form-group mb-4">
                 <label for="email">Your Email</label>
@@ -47,6 +50,7 @@
                   </span>
                   <input
                     type="email"
+                    formControlName="username"
                     class="form-control"
                     placeholder="example@company.com"
                     id="email"
@@ -74,6 +78,7 @@
                     </span>
                     <input
                       type="password"
+                      formControlName="password"
                       placeholder="Password"
                       class="form-control"
                       id="password"
