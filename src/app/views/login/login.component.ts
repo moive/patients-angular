@@ -10,7 +10,7 @@ import { ILogin } from '../../models/login.interface';
 })
 export class LoginComponent {
   loginForm: FormGroup = new FormGroup({
-    username: new FormControl('', Validators.required),
+    usuario: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
   });
 
