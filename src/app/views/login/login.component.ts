@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ApiService } from '../../services/api/api.service';
@@ -10,7 +10,7 @@ import { IResponse } from '../../models/response.interface';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   loginForm: FormGroup = new FormGroup({
     usuario: new FormControl('', Validators.required),
     password: new FormControl('', Validators.required)
@@ -20,6 +20,13 @@ export class LoginComponent {
   msgError: string = '';
 
   constructor(private apiService: ApiService, private router: Router) {}
+  ngOnInit(): void {
+    this.checkToken();
+  }
+
+  checkToken(): void {
+    if (!!localStorage.getItem('token')) this.router.navigateByUrl('dashboard');
+  }
 
   onLogin(form: ILogin) {
     this.apiService.loginByEmail(form).subscribe((data: IResponse) => {
