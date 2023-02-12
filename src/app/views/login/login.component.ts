@@ -16,6 +16,9 @@ export class LoginComponent {
     password: new FormControl('', Validators.required)
   });
 
+  errorStatus: boolean = false;
+  msgError: string = '';
+
   constructor(private apiService: ApiService, private router: Router) {}
 
   onLogin(form: ILogin) {
@@ -25,6 +28,9 @@ export class LoginComponent {
       if (status == 'ok') {
         localStorage.setItem('token', token);
         this.router.navigate(['dashboard']);
+      } else {
+        this.msgError = result.error_msg;
+        this.errorStatus = true;
       }
     });
     this.loginForm.reset();
