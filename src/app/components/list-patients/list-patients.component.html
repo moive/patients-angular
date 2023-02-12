@@ -5,12 +5,14 @@
         <h2 class="fs-5 fw-bold mb-0">List patients</h2>
       </div>
       <div class="col text-end">
-        <a href="#" class="btn btn-sm btn-primary">New Patient</a>
+        <a routerLink="/patients/new" class="btn btn-sm btn-primary"
+          >New Patient</a
+        >
       </div>
     </div>
   </div>
   <div class="table-responsive">
-    <table class="table align-items-center table-flush">
+    <table class="table align-items-center table-flush table-hover">
       <thead class="thead-light">
         <tr>
           <th class="border-bottom" scope="col">ID</th>
@@ -21,7 +23,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let patient of patients">
+        <tr
+          *ngFor="let patient of patients"
+          style="cursor: pointer"
+          (click)="editPatient(patient.PacienteId)">
           <th class="text-gray-900" scope="row"> {{ patient.PacienteId }} </th>
           <td class="fw-bolder text-gray-500"> {{ patient.Nombre }} </td>
           <td class="fw-bolder text-gray-500"> {{ patient.DNI }} </td>

@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   }
 
   checkToken(): void {
-    if (!!localStorage.getItem('token')) this.router.navigateByUrl('dashboard');
+    if (!!localStorage.getItem('token')) this.router.navigateByUrl('patients');
   }
 
   onLogin(form: ILogin) {
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       const { token }: any = result;
       if (status == 'ok') {
         localStorage.setItem('token', token);
-        this.router.navigate(['dashboard']);
+        this.router.navigate(['patients']);
       } else {
         this.msgError = result.error_msg;
         this.errorStatus = true;
