@@ -1,0 +1,34 @@
+<div class="card border-0 shadow">
+  <div class="card-header">
+    <div class="row align-items-center">
+      <div class="col">
+        <h2 class="fs-5 fw-bold mb-0">List patients</h2>
+      </div>
+      <div class="col text-end">
+        <a href="#" class="btn btn-sm btn-primary">New Patient</a>
+      </div>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table align-items-center table-flush">
+      <thead class="thead-light">
+        <tr>
+          <th class="border-bottom" scope="col">ID</th>
+          <th class="border-bottom" scope="col">Name</th>
+          <th class="border-bottom" scope="col">DNI</th>
+          <th class="border-bottom" scope="col">Telephone</th>
+          <th class="border-bottom" scope="col">Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let patient of patients">
+          <th class="text-gray-900" scope="row"> {{ patient.PacienteId }} </th>
+          <td class="fw-bolder text-gray-500"> {{ patient.Nombre }} </td>
+          <td class="fw-bolder text-gray-500"> {{ patient.DNI }} </td>
+          <td class="fw-bolder text-gray-500"> {{ patient.Telefono }} </td>
+          <td class="fw-bolder text-gray-500"> {{ patient.Correo }} </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
