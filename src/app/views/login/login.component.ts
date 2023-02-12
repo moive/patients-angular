@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiService } from '../../services/api/api.service';
 import { ILogin } from '../../models/login.interface';
+import { IResponse } from '../../models/response.interface';
 
 @Component({
   selector: 'app-login',
@@ -14,11 +16,17 @@ export class LoginComponent {
     password: new FormControl('', Validators.required)
   });
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   onLogin(form: ILogin) {
-    // console.log(form);
-    this.apiService.loginByEmail(form).subscribe(console.log);
+    this.apiService.loginByEmail(form).subscribe((data: IResponse) => {
+      const { status, result } = data;
+      const { token }: any = result;
+      if (status == 'ok') {
+        localStorage.setItem('token', token);
+        this.router.navigate(['dashboard']);
+      }
+    });
     this.loginForm.reset();
   }
 }

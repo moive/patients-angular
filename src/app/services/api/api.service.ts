@@ -15,7 +15,6 @@ export class ApiService {
 
   loginByEmail(form: ILogin): Observable<IResponse> {
     let uri = this._url + '/auth';
-    console.log('uri', uri);
     return this.http.post<IResponse>(uri, form);
   }
 }
